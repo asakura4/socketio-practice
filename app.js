@@ -1,18 +1,14 @@
 const express = require('express')
-const path = require('path')
 const app = express()
+
 const http = require('http')
 const server = http.createServer(app)
+const routes = require('./routes')
+
 const { Server } = require('socket.io')
 const io = new Server(server)
 
-app.get('/chatroom', (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/chatroom.html'))
-})
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/index.html'))
-})
+app.use(routes)
 
 io.on('connection', socket => {
 //   console.log(socket)
