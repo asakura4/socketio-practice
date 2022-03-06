@@ -43,7 +43,7 @@
           messages.appendChild(item);
           window.scrollTo(0, document.body.scrollHeight);
       })
-      socket.on('systemBroadcast', function(msg){
+      socket.on('user', function(msg){
           var item = document.createElement('li');
           item.textContent = '==== ' + msg+' ====';
           messages.appendChild(item);

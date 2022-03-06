@@ -7,9 +7,7 @@ const routes = require('./routes')
 const io = require('socket.io')(server)
 require('./config/sockets')(io)
 
-app.use((req, res, next) => {
-  next()
-})
+app.set('io', io)
 app.use(routes)
 
 // const { Server } = require('socket.io')
